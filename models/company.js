@@ -1,5 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Company = sequelize.define("Company", {
+    symbol: DataTypes.STRING,
     price: DataTypes.DECIMAL,
     beta: DataTypes.STRING,
     volAvg: DataTypes.STRING,

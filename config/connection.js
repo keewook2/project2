@@ -3,12 +3,12 @@ var connection;
 
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else{
+} else {
     connection = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "yourpassword",
-        database: "dbname"
+    host: "localhost",
+    user: "root",
+    password: "dlrldnr1",
+    database: "project2DB"
     });
 }
 

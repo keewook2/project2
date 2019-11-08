@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Company = sequelize.define("User", {
+    var User = sequelize.define("User", {
       price: DataTypes.DECIMAL,
       name: DataTypes.STRING,
       password: DataTypes.STRING,

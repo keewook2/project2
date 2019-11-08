@@ -2,9 +2,20 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
+  app.get("/api/company", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
+    });
+  });
+
+  app.get("/api/company/:name", function(req, res) {
+    // 2; Add a join to include all of the Author's Posts here
+    db.Author.findOne({
+      where: {
+        id: req.params.name
+      }
+    }).then(function(dbExample) {
+      res.json(db);
     });
   });
 

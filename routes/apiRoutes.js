@@ -2,20 +2,44 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/conmpany", function(req, res) {
+  app.get("/all/conmpany", function(req, res) {
     db.Company.findAll({}).then(function(dbExamples) {
-      res.json(Company);
+      res.json(dbExamples);
     });
   });
 
-  app.get("/api/conmpany/:name", function(req, res) {
-    // 2; Add a join to include all of the Author's Posts here
-    db.conmpany.findOne({
+  app.get("/id/:id", function(req, res) {
+    // 2. Add a join here to include the Author who wrote the Post
+    db.Company.findOne({
       where: {
-        id: req.params.name
+        id: req.params.id
+      }
+    }).then(function(dbget) {
+      //console.log(dbget);
+      res.json(dbget);
+    });
+  });
+
+  app.get("/category/:category", function(req, res) {
+    // 2. Add a join here to include the Author who wrote the Post
+    db.Company.findOne({
+      where: {
+        category : req.params.category
+      }
+    }).then(function(dbget) {
+      console.log(dbget);
+      res.json(dbget);
+    });
+  });
+
+  app.get("/api/companytest/:id", function(req, res) {
+    // 2; Add a join to include all of the Author's Posts here
+    db.Company.findOne({
+      where: {
+        id: req.params.id
       }
     }).then(function(dbExample) {
-      res.json(db);
+      res.json(dbExample);
     });
   });
 
@@ -43,11 +67,25 @@ module.exports = function(app) {
       res.json(Company);
     });
   });
+  //
+  app.post("/insertUser", function(req, res) {
+    db.User.create({
+      price:    req.body.price,
+      name:     req.body.name,
+      password: req.body.password, 
+      email:    req.body.email
 
+    }).then(function(Users) {
+     // res.JSON.parse(Users);
+      res.json(Users);
+      
+    });
+  });
   // Delete an example by id
-  app.delete("/api/conmpany/:id", function(req, res) {
+  app.delete("/api/posts/:id", function(req, res) {
+    
     db.Company.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(Company);
+      res.json(dbExample);
     });
   });
 };

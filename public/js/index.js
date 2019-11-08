@@ -97,3 +97,16 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+function ajaxtest(id){
+  $.ajax({
+    url: "https://financialmodelingprep.com/api/v3/financials/income-statement/"+id,
+    type: "GET"
+  }).then(function(response){
+    console.log(response);
+  })
+}
+
+ajaxtest("AAPL");
+ajaxtest("GOGL");
+ajaxtest("FB");

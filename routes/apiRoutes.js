@@ -2,12 +2,18 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
+<<<<<<< HEAD
   app.get("/all/conmpany", function(req, res) {
     db.Company.findAll({}).then(function(dbExamples) {
+=======
+  app.get("/api/company", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+>>>>>>> 014a3c62a89fd9f1bb658789bb4c594e1e4b4437
       res.json(dbExamples);
     });
   });
 
+<<<<<<< HEAD
   app.get("/id/:id", function(req, res) {
     // 2. Add a join here to include the Author who wrote the Post
     db.Company.findOne({
@@ -39,6 +45,22 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbExample) {
+=======
+  app.get("/api/company/:name", function(req, res) {
+    // 2; Add a join to include all of the Author's Posts here
+    db.Author.findOne({
+      where: {
+        id: req.params.name
+      }
+    }).then(function(dbExample) {
+      res.json(db);
+    });
+  });
+
+  // Create a new example
+  app.post("/api/examples", function(req, res) {
+    db.Example.create(req.body).then(function(dbExample) {
+>>>>>>> 014a3c62a89fd9f1bb658789bb4c594e1e4b4437
       res.json(dbExample);
     });
   });

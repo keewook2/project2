@@ -87,8 +87,8 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    }).then(function(Company) {
+      res.json(Company);
     });
   });
 };

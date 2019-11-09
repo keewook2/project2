@@ -39,8 +39,7 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(dbExample) {
-      res.json(dbExample);. 
-      
+      res.json(dbExample);
     });
   });
 
@@ -83,10 +82,13 @@ module.exports = function(app) {
     });
   });
   // Delete an example by id
-  app.delete("/api/posts/:id", function(req, res) {
-    
-    db.Company.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.delete("/api/company/:id", function(req, res) {
+    db.Company.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPost) {
+      res.json(dbPost);
     });
   });
 };

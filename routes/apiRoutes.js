@@ -2,6 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
+<<<<<<< HEAD
   app.get("/api/company", function(req, res) {
     db.Company.findAll({}).then(function(Company) {
       res.json(Company);
@@ -16,6 +17,46 @@ module.exports = function(app) {
       }
     }).then(function(db) {
       res.json(db);
+=======
+  app.get("/all/conmpany", function(req, res) {
+    db.Company.findAll({}).then(function(dbExamples) {
+      res.json(dbExamples);
+    });
+  });
+
+  app.get("/id/:id", function(req, res) {
+    // 2. Add a join here to include the Author who wrote the Post
+    db.Company.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbget) {
+      //console.log(dbget);
+      res.json(dbget);
+    });
+  });
+
+  app.get("/category/:category", function(req, res) {
+    // 2. Add a join here to include the Author who wrote the Post
+    db.Company.findOne({
+      where: {
+        category : req.params.category
+      }
+    }).then(function(dbget) {
+      console.log(dbget);
+      res.json(dbget);
+    });
+  });
+
+  app.get("/api/companytest/:id", function(req, res) {
+    // 2; Add a join to include all of the Author's Posts here
+    db.Company.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbExample) {
+      res.json(dbExample);
+>>>>>>> df299d7004ac9b74d1198f97d17999beacc3e898
     });
   });
 
@@ -44,9 +85,37 @@ module.exports = function(app) {
     });
   });
 
+  // Updating existing company in database  
+  app.put("/updateCompany/:id", function(req, res) {
+    db.Company.update(
+      req.body,
+      {where:{id: req.params.id}
+      }).then(function(dbUpdate) {
+      res.json(dbUpdate);
+    });
+  });
+  //
+
+  app.post("/insertUser", function(req, res) {
+    db.User.create({
+      price:    req.body.price,
+      name:     req.body.name,
+      password: req.body.password, 
+      email:    req.body.email
+
+    }).then(function(Users) {
+     // res.JSON.parse(Users);
+      res.json(Users);
+      
+    });
+  });
   // Delete an example by id
-  app.delete("/api/conmpany/:id", function(req, res) {
-    db.Company.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.delete("/api/company/:id", function(req, res) {
+    db.Company.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(Company) {
       res.json(Company);
     });
   });

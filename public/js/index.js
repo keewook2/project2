@@ -5,11 +5,25 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
 
-
-
-
-
-
+function ShowTheSectors(){
+  var queryURL = "https://financialmodelingprep.com/api/v3/stock/sectors-performance";
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  }).then(function(response){
+      console.log(response.sectorPerformance);
+      var dataArr = response.sectorPerformance;
+      dataArr.forEach(function(sector, item ,array){
+      var sector = response.sectorPerformance[item].sector; 
+      var changes =  response.sectorPerformance[item].changesPercentage ; 
+      console.log(sector);
+      console.log(changes);
+      var SectorPercentage =  "<tr> <th> <a href='/api/company'>"+ sector + "</a></th> <th> "+ changes +" </th> </tr>" ; 
+      $(".tbody").append(SectorPercentage);
+      });
+  });
+}
+ShowTheSectors();
 
 // The API object contains methods for each kind of request we'll make
 var API = {

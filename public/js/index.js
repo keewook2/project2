@@ -18,13 +18,11 @@ function ShowTheSectors(){
       var changes =  response.sectorPerformance[item].changesPercentage ; 
       console.log(sector);
       console.log(changes);
-      var SectorPercentage =  "<tr> <th> <a href='/api/company'>+ sector + "</a></th> <th> "+ changes +" </th> </tr>" ; 
+      var SectorPercentage =  "<tr> <th> <a href='/api/company'>"+ sector + "</a></th> <th> "+ changes +" </th> </tr>" ; 
       $(".tbody").append(SectorPercentage);
       });
   });
 }
-
-
 ShowTheSectors();
 
 // The API object contains methods for each kind of request we'll make

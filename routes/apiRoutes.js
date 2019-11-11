@@ -8,18 +8,18 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/conmpany/:name", function(req, res) {
+  app.get("/api/company/:symbol", function(req, res) {
     // 2; Add a join to include all of the Author's Posts here
-    db.conmpany.findOne({
+    db.Company.findOne({
       where: {
-        id: req.params.name
+        symbol: req.params.symbol
       }
-    }).then(function(dbExample) {
+    }).then(function(db) {
       res.json(db);
     });
   });
 
-  // Create a new Comapany
+  // Create a new Company
   app.post("/api/insert", function(req, res) {
     db.Company.create({
       symbol: req.body.symbol,

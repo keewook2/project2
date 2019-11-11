@@ -1,19 +1,142 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{example.id}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<nav>
+	//Left Side:
+	// Logo
+	// Company Name: (name)
+	// Ticker: (this.ticker)
+
+	// Right Side:
+	// Stock Price - Daily Close or Current
+	// Stock Price - 52 week high/low
+</nav>
+
+<div class="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="card col-4" id="overview">
+				<div class="card-title">
+					Company Overview
+				</div>
+				<br>
+				<hr>
+				<br>
+				<div class="card-body">
+					// Name: (name)
+					// HQ Location
+					// Industry
+					// Sector
+					// Key Executives
+					// Headcount
+					// Date Founded
+				</div>
+			</div> // END OVERVIEW CARD
+
+			<div class="card col-8" id="metrics">
+				<div class="card-title">
+					Key Financial Metrics
+				</div>
+				<br>
+				<hr>
+				<br>
+				<div class="card-body">
+					<div class="metrics-fin-stats">
+						// Revenue
+						// Rev Growth
+						// GP
+						// % margin
+						// Operating Income/(Loss)
+						// % margin
+						// Net Income
+						// % margin
+						// EBITDA
+						// % margin
+					</div>
+					<div class="metrics-bs-stock"></div>
+					// BS
+					// Cash
+					// New Working Capital
+					// Leverage Ratio
+					// Free Cash Flow
+					// Interest Coverage
+					// Stock
+					// Total Shares Outstanding
+					// Common shares Outstanding
+					// Dividend info
+					// Need to decide what to show here
+
+				</div>
+			</div> // END KEY METRICS CARD
+		</div> // end first row
+
+		<br>
+		<hr>
+		<br>
+
+		<div class="row">
+			<div class="card col-4" id="news">
+				<div class="card-title">
+					Latest News
+				</div>
+				<br>
+				<hr>
+				<br>
+				<div class="card-body">
+					// TBD once we have determined an API and fields for output
+					// Date
+					// Headline
+					// Publisher
+					// Executive Summary
+					// Tags
+				</div>
+			</div> // END NEWS CARD
+
+			<div class="card col-8" id="fin-stats">
+				<div class="card-title">
+					Summary Financial Statements
+				</div>
+				<br>
+				<hr>
+				<br>
+				<div class="card-body">
+					// Income Statement
+					// Revenue
+					// Rev Growth
+					// COGS
+					// GP
+					// GP Margin
+					// OpEx
+					// EBT
+					// Net Income
+					// EBITDA
+					// EBITDA margin
+					// BS
+					// Cash
+					// Current Assets
+					// LT Assets
+					// Total Assets
+					// Current Liabilities
+					// LT Liabilities
+					// Total Liabilities
+					// Equtiy (Need to decide which accounts to show as varies between company)
+					//
+
+					Total Consolidated Debt
+				</div>
+
+				// NEED TO ADD PLACEHOLDERS FOR DESIRED FUNCTIONALITY E.G. BUTTONS TO GENERATE MODEL OUTPUT
+
+			</div> // END SUMMARY FINANCIALS CARD
+		</div> // END SECOND ROW
+
+		<br>
+		<br>
+
+		<footer class="text-center">
+			<hr>
+			<br>
+			Copyright: Dolla Billas LLC
+			<br>
+			<br>
+		</footer>
+
+	</div>
 </div>

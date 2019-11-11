@@ -11,20 +11,19 @@ module.exports = function(app) {
     });
   });
 
-    // Load company page and pass in an example by id
-    app.get("/company/:symbol", function(req, res) {
-      db.Company.findOne({ where: { symbol: req.params.symbol } }).then(function(company) {
-        res.render("company", {
-          company: company
-        });
-      });
-    });
+  app.get("/company",function(req,res){
+    db.Company.findAll({}).then(function(company){
+      res.render("lists", {
+        company: company
+      })
+    })
+  })
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Company.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  // Load company page and pass in an example by symbol
+  app.get("/company/:symbol", function(req, res) {
+    db.Company.findOne({ where: { symbol: req.params.symbol } }).then(function(company) {
+      res.render("company", {
+        company: company
       });
     });
   });

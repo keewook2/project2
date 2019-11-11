@@ -2,8 +2,8 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/conmpany", function(req, res) {
-    db.Company.findAll({}).then(function(dbExamples) {
+  app.get("/api/company", function(req, res) {
+    db.Company.findAll({}).then(function(Company) {
       res.json(Company);
     });
   });

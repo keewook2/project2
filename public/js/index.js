@@ -11,14 +11,21 @@ function ShowTheSectors(){
       url: queryURL,
       method: "GET"
   }).then(function(response){
-      console.log(response.sectorPerformance);
+      //console.log(response.sectorPerformance);
       var dataArr = response.sectorPerformance;
       dataArr.forEach(function(sector, item ,array){
       var sector = response.sectorPerformance[item].sector; 
       var changes =  response.sectorPerformance[item].changesPercentage ; 
-      console.log(sector);
-      console.log(changes);
-      var SectorPercentage =  "<tr> <th> <a href='/company'>"+ sector + "</a></th> <th> "+ changes +" </th> </tr>" ; 
+      var changes2 =  parseFloat(response.sectorPerformance[item].changesPercentage) ; 
+      var status ;
+      //console.log(sector);
+     // console.log(changes2);
+      if(changes2 < 0){
+        status = "negative";
+      }else{
+        status = "";
+      }
+      var SectorPercentage =  "<tr> <th> <a href='/company'>"+ sector + "</a></th> <th class='"+ status +"'> "+ changes +" </th> </tr>" ; 
       $(".tbody").append(SectorPercentage);
       });
   });

@@ -67,7 +67,18 @@ module.exports = function(app) {
       res.json(Company);
     });
   });
+
+  // Updating existing company in database  
+  app.put("/updateCompany/:id", function(req, res) {
+    db.Company.update(
+      req.body,
+      {where:{id: req.params.id}
+      }).then(function(dbUpdate) {
+      res.json(dbUpdate);
+    });
+  });
   //
+
   app.post("/insertUser", function(req, res) {
     db.User.create({
       price:    req.body.price,

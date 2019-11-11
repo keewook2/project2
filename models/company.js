@@ -18,5 +18,12 @@ module.exports = function(sequelize, DataTypes) {
     sector: DataTypes.STRING,
     image: DataTypes.TEXT,
   });
+
+  Company.associate = function(models){
+    Company.hasMany(models.Financials,models.Keymetrics, {
+      onDelete: "cascade"
+    });
+  };
+
   return Company;
 };

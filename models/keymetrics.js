@@ -59,5 +59,14 @@ module.exports = function(sequelize,DataTypes){
         ROE: DataTypes.STRING,
         capexPerShare: DataTypes.STRING
     });
+
+    Keymetrics.associate = function(models){
+        Keymetrics.belongsTo(models.Company,{
+            foreignKey: {
+                allowNull: false
+            }
+        })
+    }
+
     return Keymetrics;
 };

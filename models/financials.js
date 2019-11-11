@@ -59,5 +59,14 @@ module.exports = function(sequelize, DataTypes){
         otherAssets: DataTypes.STRING,
         otherLiabilities: DataTypes.STRING
     });
+
+    Financials.associate = function(models){
+        Financials.belongsTo(models.Company,{
+            foreignKey: {
+                allowNull: false
+            }
+        })
+    }
+
     return Financials;
 };

@@ -2,21 +2,13 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/all/conmpany", function(req, res) {
-    db.Company.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  app.get("/id/:id", function(req, res) {
-    // 2. Add a join here to include the Author who wrote the Post
-    db.Company.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbget) {
-      //console.log(dbget);
-      res.json(dbget);
+  app.get("/api/company", function(req, res) {
+    // need to check post-api-routes in previous exercise on here
+    db.Company.findAll(
+      {
+        include: [db.Financials]
+      }).then(function(Company) {
+      res.json(Company);
     });
   });
 
@@ -43,6 +35,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/financials", function(req,res){
+    db.Financials.findAll({}).then(function(Financials){
+      res.json(Financials);
+    })
+  });
+
+
   // Create a new Company
   app.post("/api/insert", function(req, res) {
     db.Company.create({
@@ -68,42 +67,23 @@ module.exports = function(app) {
     });
   });
 
-  // Updating existing company in database  
-  app.put("/updateCompany/:id", function(req, res) {
-    db.Company.update(
-      req.body,
-      {where:{id: req.params.id}
-      }).then(function(dbUpdate) {
-      res.json(dbUpdate);
-    });
-  });
-  //
+  app.post("/api/insert/financials", function(req, res){
+    db.Financials.create({
+      symbol: req.body.symbol,
+      date: req.body.date,
+      revenue: req.body.revenue,
+      revenueGrowth: req.body.revenueGrowth,
+      costOfRevenue: req.body.costOfRevenue,
+      grossProfit: req.body.grossProfit,
+      rndExpenses: req.body.rndExpenses,
+      sgaExpense: req.body.sgaExpense,
+      CompanyId: req.body.CompanyId
+    }).then(function(Financials){
+      res.json(Financials);
+    })
+  })
 
-  app.post("/insertUser", function(req, res) {
-    db.User.create({
-      price:    1.2,
-      name:     req.body.email,
-      password: req.body.password, 
-      email:    req.body.email
 
-    }).then(function(Users) {
-     // res.JSON.parse(Users);
-      res.json(Users);
-      
-    });
-  });
-
-  app.post("/findUser", function(req, res) {
-    // 2; Add a join to include all of the Author's Posts here
-    console.log("userlook up")
-    db.User.findOne({
-      where: {
-        email : req.body.email
-      }
-    }).then(function(user) {
-      res.json(user);
-    });
-  });
   // Delete an example by id
   app.delete("/api/company/:id", function(req, res) {
     db.Company.destroy({

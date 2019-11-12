@@ -1,9 +1,14 @@
+{{!-- <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">DON'T PRESS
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav> --}}
+
 <nav class="navbar navbar-dark bg-dark">
-	{{each company}}
-		// symbol/ticker
+	{{#each company}}
 		{{company.symbol}}
-		// Company Corporate Name
 		{{company.companyName}}
+	{{/each}}
 </nav>
 
 <div class="wrapper">
@@ -25,11 +30,11 @@
 					Sector: {{company.sector}}<br>
 					CEO: {{company.ceo}}<br>
 				</div>
-			</div> // END OVERVIEW CARD
+			</div>
 
 			<div class="card col-8" id="metrics">
 				<div class="card-title">
-					Key Financial Metrics
+					Key Metrics
 				</div>
 				<br>
 				<hr>
@@ -37,38 +42,33 @@
 				<div class="card-body">
 					<div class="metrics-fin-stats">
 						<thead>
-						
 							{{#each company}}
-								// Revenue 
-								// Rev Growth (italic 2 decimal points)
-								// GP
-								// % margin
-								
-								// Operating Income/(Loss)
-								// % margin
-								// Net Income
-								// % margin
-								// EBITDA
-								// % margin
+								<th>{{company.date}}</th>
 							{{/each}}
 						</thead>
+						<tbody>
+							{{#each company}}
+							<tr>
+								<td>{{company.Revenue}}</td>
+								<td>{{company.Revenue Growth}}</td>
+								<td>{{company.Cost of Revenue}}</td>
+								<td>{{company.Gross Profit}}</td>
+								<td>{{company.Operating Expenses}}</td>
+								<td>{{company.Operating Income}}</td>
+								<td>{{company.Gross Margin}}</td>
+								<td>{{company.Interest Expense}}</td>
+								<td>{{company.Earnings Before Tax}}</td>
+								<td>{{company.Income Tax Expense}}</td>
+								<td>{{company.Net Income}}</td>
+								<td>{{company.Profit Margin}}</td>
+								<td>{{company.EBITDA}}</td>
+								<td>{{company.EBITDA Margin}}</td>
+							</tr>
+							{{/each}}
+						</tbody>
 					</div>
-					<div class="metrics-bs-stock"></div>
-					// BS
-					// Cash
-					// New Working Capital
-					// Leverage Ratio
-					// Free Cash Flow
-					// Interest Coverage
-					// Stock
-					// Total Shares Outstanding
-					// Common shares Outstanding
-					// Dividend info
-					// Need to decide what to show here
-
-				</div>
-			</div> // END KEY METRICS CARD
-		</div> // end first row
+			</div>
+		</div>
 
 		<br>
 		<hr>
@@ -90,7 +90,7 @@
 					// Executive Summary
 					// Tags
 				</div>
-			</div> // END NEWS CARD
+			</div>
 
 			<div class="card col-8" id="fin-stats">
 				<div class="card-title">
@@ -100,34 +100,40 @@
 				<hr>
 				<br>
 				<div class="card-body">
-					// Income Statement
-						// Revenue
-						// Rev Growth
-						// COGS
-						// GP
-						// OpEx
-						// EBT
-						// Net Income
-						// EBITDA
-						// EBITDA margin
-						// BS
-						// Cash
-						// Current Assets
-						// LT Assets
-						// Total Assets
-						// Current Liabilities
-						// LT Liabilities
-						// Total Liabilities
-						// Equtiy (Need to decide which accounts to show as varies between company)
-						//
-
-					Total Consolidated Debt
+					<br>
+					<hr>
+					<br>
+					Summary Income Statement
+					<br>
+					<hr>
+					<thead>
+						{{#each company}}
+						<th>{{company.date}}</th>
+						{{/each}}
+					</thead>
+					<tbody>
+						{{#each company}}
+						<tr>
+							<td>{{company.Revenue}}</td>
+							<td>{{company.Revenue Growth}}</td>
+							<td>{{company.Cost of Revenue}}</td>
+							<td>{{company.Gross Profit}}</td>
+							<td>{{company.Operating Expenses}}</td>
+							<td>{{company.Operating Income}}</td>
+							<td>{{company.Gross Margin}}</td>
+							<td>{{company.Interest Expense}}</td>
+							<td>{{company.Earnings Before Tax}}</td>
+							<td>{{company.Income Tax Expense}}</td>
+							<td>{{company.Net Income}}</td>
+							<td>{{company.Profit Margin}}</td>
+							<td>{{company.EBITDA}}</td>
+							<td>{{company.EBITDA Margin}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
 				</div>
-
-				// NEED TO ADD PLACEHOLDERS FOR DESIRED FUNCTIONALITY E.G. BUTTONS TO GENERATE MODEL OUTPUT
-
-			</div> // END SUMMARY FINANCIALS CARD
-		</div> // END SECOND ROW
+			</div>
+		</div>
 
 		<br>
 		<br>
@@ -135,7 +141,7 @@
 		<footer class="text-center">
 			<hr>
 			<br>
-			Copyright: Dolla Billas LLC
+			Copyright
 			<br>
 			<br>
 		</footer>

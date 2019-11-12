@@ -4,3 +4,12 @@
 .negative{
   color: red;
 }
+
+.header-top-section{
+  display: block;
+  width: 100%;
+  background: #000;
+  color: #fff;
+}
+
+

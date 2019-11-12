@@ -2,22 +2,6 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-<<<<<<< HEAD
-  app.get("/api/company", function(req, res) {
-    db.Company.findAll({}).then(function(Company) {
-      res.json(Company);
-    });
-  });
-
-  app.get("/api/company/:symbol", function(req, res) {
-    // 2; Add a join to include all of the Author's Posts here
-    db.Company.findOne({
-      where: {
-        symbol: req.params.symbol
-      }
-    }).then(function(db) {
-      res.json(db);
-=======
   app.get("/all/conmpany", function(req, res) {
     db.Company.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
@@ -56,7 +40,6 @@ module.exports = function(app) {
       }
     }).then(function(dbExample) {
       res.json(dbExample);
->>>>>>> df299d7004ac9b74d1198f97d17999beacc3e898
     });
   });
 
@@ -98,8 +81,8 @@ module.exports = function(app) {
 
   app.post("/insertUser", function(req, res) {
     db.User.create({
-      price:    req.body.price,
-      name:     req.body.name,
+      price:    1.2,
+      name:     req.body.email,
       password: req.body.password, 
       email:    req.body.email
 
@@ -107,6 +90,18 @@ module.exports = function(app) {
      // res.JSON.parse(Users);
       res.json(Users);
       
+    });
+  });
+
+  app.post("/findUser", function(req, res) {
+    // 2; Add a join to include all of the Author's Posts here
+    console.log("userlook up")
+    db.User.findOne({
+      where: {
+        email : req.body.email
+      }
+    }).then(function(user) {
+      res.json(user);
     });
   });
   // Delete an example by id

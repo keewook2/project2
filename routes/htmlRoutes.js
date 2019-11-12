@@ -28,7 +28,7 @@ module.exports = function(app) {
     });
   });
   
-  app.get("/singup",function(req,res){
+  app.get("/user",function(req,res){
     res.render("signup");
   })
   // Render 404 page for any unmatched routes

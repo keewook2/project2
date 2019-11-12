@@ -1,4 +1,5 @@
 var db = require("../models");
+var { User } = db
 
 module.exports = function(app) {
   // Get all examples
@@ -35,12 +36,58 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/findUser", function(req, res) {
+    // 2; Add a join to include all of the Author's Posts here
+    db.User.findOne({
+      where: {
+        email : req.body.email
+      }
+    }).then(function(dbExample) {
+
+      res.json(dbExample);
+    });
+  });
+
+    // Create new user
+    app.post("/insertUser", function(req, res) {
+      db.User.create({
+        email:      req.body.email,
+        password :  req.body.password
+      }).then(function(User) {
+        res.json(User);
+      });
+    });
+
+
+  app.post('/user', function(req,res) {
+
+
+    
+    var user =  db.User.findOne({
+      where: {
+        email: req.body.email
+      }
+    })
+
+    if(!user){
+       db.User.create(req.body)
+      .then(newUser => res.send(newUser))
+    }
+    console.log(user);
+
+
+
+
+
+  })
+
   app.get("/api/financials", function(req,res){
     db.Financials.findAll({}).then(function(Financials){
       res.json(Financials);
     })
   });
 
+ 
 
   // Create a new Company
   app.post("/api/insert", function(req, res) {

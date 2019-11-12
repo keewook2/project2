@@ -33,6 +33,7 @@ module.exports = function(app) {
   })
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
+    // redirect it to index 
     res.render("404");
   });
 };

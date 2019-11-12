@@ -51,22 +51,23 @@ $(document).ready(function(){
         }
 
 
-        $(".companyName").text(name);
+    });
+
+    var apiKey = "f3a8b323323744b19301a95301e5ab60";
+    var newsURL = "https://newsapi.org/v2/everything?q="+ name + "&from=2019-11-11&to=2019-11-11&sortBy=popularity&apiKey="
+    $.ajax({
+        url: newsURL+apiKey,
+        method: "GET"
+    }).then(function(response){
+        console.log("title: "+response.articles[0].title);
+        console.log("source: "+response.articles[0].source.name);
+        console.log("summary: "+response.articles[0].description);
+        console.log("Date: "+response.articles[0].publishedAt);
+        $(".news_title").append(response.articles[0].title);
+        $(".news_title").css("font-weight","bold");
+        $(".news_date").append(response.articles[0].publishedAt);
+        $(".news_source").append(response.articles[0].source.name);
+        $(".news_summary").append(response.articles[0].description);
     })
 
-    // // AJAX call to get balance sheet statement data
-    // $.ajax({
-    //     url: baseURL + "financials/balance-sheet-statement/" + ticker,
-    //     method: "GET"
-    // }).then(function(response){
-    //     console.log(response);
-    // })
-
-    // // AJAX call to get company key metrics data
-    // $.ajax({
-    //     url: baseURL + "company-key-metrics/" + ticker,
-    //     method: "GET"
-    // }).then(function(response){
-    //     console.log(response);
-    // })
 })

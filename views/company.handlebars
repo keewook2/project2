@@ -1,4 +1,17 @@
-  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">App Name</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Company</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Sign in</a>
+    </li>
+  </ul>
+</nav>
+<br>
 <div class="wrapper">
 	<div class="container">
 		<div class="row">
@@ -18,11 +31,11 @@
 					Sector: {{company.sector}}<br>
 					CEO: {{company.ceo}}<br>
 				</div>
-			</div> // END OVERVIEW CARD
+			</div> 
 
 			<div class="card col-12" id="metrics">
 				<div class="card-title">
-					Key Financial Metrics
+					Summary Financials
 				</div>
 				<br>
 				<div class="card-body metrics-fin-stats">
@@ -84,67 +97,27 @@
 						</tbody>
 					</table>
 				</div>
-			</div> // END KEY METRICS CARD
-		</div> // end first row
+			</div>
+		</div> 
 
 		<br>
 		<hr>
 		<br>
 
 		<div class="row">
-			<div class="card col-4" id="news">
+			<div class="card col-5" id="news">
 				<div class="card-title">
 					<span id="test">Latest News</span>
 				</div>
-				<br>
 				<hr>
-				<br>
 				<div class="card-body">
-					// TBD once we have determined an API and fields for output
-					// Date
-					// Headline
-					// Publisher
-					// Executive Summary
-					// Tags
+					<h3 class="news_title"></h3>
+					<p class="news_source"></p>
+					<p class="news_date"></p>
+					<p class="news_summary"></p>
 				</div>
-			</div> // END NEWS CARD
-
-			<div class="card col-8" id="fin-stats">
-				<div class="card-title">
-					Summary Financial Statements
-				</div>
-				<br>
-				<hr>
-				<br>
-				<div class="card-body">
-					// Income Statement
-						// Revenue
-						// Rev Growth
-						// COGS
-						// GP
-						// OpEx
-						// EBT
-						// Net Income
-						// EBITDA
-						// EBITDA margin
-						// BS
-						// Cash
-						// Current Assets
-						// LT Assets
-						// Total Assets
-						// Current Liabilities
-						// LT Liabilities
-						// Total Liabilities
-						// Equtiy (Need to decide which accounts to show as varies between company)
-						//
-
-					Total Consolidated Debt
-				</div>
-
-				// NEED TO ADD PLACEHOLDERS FOR DESIRED FUNCTIONALITY E.G. BUTTONS TO GENERATE MODEL OUTPUT
-
-			</div> // END SUMMARY FINANCIALS CARD
-		</div> // END SECOND ROW
+			</div> 
+		</div> 
 
 		<br>
 		<br>

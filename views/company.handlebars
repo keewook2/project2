@@ -6,8 +6,8 @@
 
 <nav class="navbar navbar-dark bg-dark">
 	{{#each company}}
-		{{company.symbol}}
-		{{company.companyName}}
+	{{company.symbol}}
+	{{company.companyName}}
 	{{/each}}
 </nav>
 
@@ -23,12 +23,14 @@
 				<br>
 				<div class="card-body">
 					<img src="{{company.image}}"><br>
-					Ticker: {{company.symbol}}
-					<br>
 					Name: {{company.companyName}}<br>
+					Ticker: {{company.symbol}}<br>
+					Listed Exhange: {{company.exchange}}<br>
+					Market Cap: {{company.mktCap}}<br>
 					Industry: {{company.industry}}<br>
 					Sector: {{company.sector}}<br>
 					CEO: {{company.ceo}}<br>
+					Business Overview: {{company.description}}<br>
 				</div>
 			</div>
 
@@ -43,7 +45,102 @@
 					<div class="metrics-fin-stats">
 						<thead>
 							{{#each company}}
-								<th>{{company.date}}</th>
+							<th>{{company.date}}</th>
+							{{/each}}
+						</thead>
+						<tbody>
+							{{#each company}}
+							<tr>
+								<td>{{company.Revenue}}</td>
+								<td>{{company.Revenue Growth}}</td>
+								<td>{{company.Cost of Revenue}}</td>
+								<td>{{company.Gross Profit}}</td>
+								<td>{{company.Operating Expenses}}</td>
+								<td>{{company.Operating Income}}</td>
+								<td>{{company.Gross Margin}}</td>
+								<td>{{company.Interest Expense}}</td>
+								<td>{{company.Earnings Before Tax}}</td>
+								<td>{{company.Income Tax Expense}}</td>
+								<td>{{company.Net Income}}</td>
+								<td>{{company.Profit Margin}}</td>
+								<td>{{company.EBITDA}}</td>
+								<td>{{company.EBITDA Margin}}</td>
+							</tr>
+							{{/each}}
+						</tbody>
+
+						// TEST
+						<thead>
+							{{#each sumIS}}
+							<th>{{sumIS.date}}</th>
+							{{/each}}
+						</thead>
+						<tbody>
+							{{#each sumIS}}
+							<tr>
+								<td>{{sumIS.symbol}}</td>
+								<td>{{sumIS.revenue}}</td>
+								<td>{{sumIS.revenueGrowth}}</td>
+								<td>{{sumIS.COGS}}</td>
+								<td>{{sumIS.GP}}</td>
+								{{!-- <td>{{sumIS.Operating Expenses}}</td>
+								<td>{{sumIS.Operating Income}}</td>
+								<td>{{sumIS.Gross Margin}}</td>
+								<td>{{sumIS.Interest Expense}}</td>
+								<td>{{sumIS.Earnings Before Tax}}</td>
+								<td>{{sumIS.Income Tax Expense}}</td>
+								<td>{{sumIS.Net Income}}</td>
+								<td>{{sumIS.Profit Margin}}</td>
+								<td>{{sumIS.EBITDA}}</td>
+								<td>{{sumIS.EBITDA Margin}}</td> --}}
+							</tr>
+							{{/each}}
+						</tbody>
+						// end TEST
+
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<hr>
+			<br>
+
+			<div class="row">
+				<div class="card col-4" id="news">
+					<div class="card-title">
+						Latest News
+					</div>
+					<br>
+					<hr>
+					<br>
+					<div class="card-body">
+						// TBD once we have determined an API and fields for output
+						// Date
+						// Headline
+						// Publisher
+						// Executive Summary
+						// Tags
+					</div>
+				</div>
+
+				<div class="card col-8" id="fin-stats">
+					<div class="card-title">
+						Summary Financial Statements
+					</div>
+					<br>
+					<hr>
+					<br>
+					<div class="card-body">
+						<br>
+						<hr>
+						<br>
+						Summary Income Statement
+						<br>
+						<hr>
+						<thead>
+							{{#each company}}
+							<th>{{company.date}}</th>
 							{{/each}}
 						</thead>
 						<tbody>
@@ -67,84 +164,19 @@
 							{{/each}}
 						</tbody>
 					</div>
-			</div>
-		</div>
-
-		<br>
-		<hr>
-		<br>
-
-		<div class="row">
-			<div class="card col-4" id="news">
-				<div class="card-title">
-					Latest News
 				</div>
-				<br>
+			</div>
+
+			<br>
+			<br>
+
+			<footer class="text-center">
 				<hr>
 				<br>
-				<div class="card-body">
-					// TBD once we have determined an API and fields for output
-					// Date
-					// Headline
-					// Publisher
-					// Executive Summary
-					// Tags
-				</div>
-			</div>
+				Copyright
+				<br>
+				<br>
+			</footer>
 
-			<div class="card col-8" id="fin-stats">
-				<div class="card-title">
-					Summary Financial Statements
-				</div>
-				<br>
-				<hr>
-				<br>
-				<div class="card-body">
-					<br>
-					<hr>
-					<br>
-					Summary Income Statement
-					<br>
-					<hr>
-					<thead>
-						{{#each company}}
-						<th>{{company.date}}</th>
-						{{/each}}
-					</thead>
-					<tbody>
-						{{#each company}}
-						<tr>
-							<td>{{company.Revenue}}</td>
-							<td>{{company.Revenue Growth}}</td>
-							<td>{{company.Cost of Revenue}}</td>
-							<td>{{company.Gross Profit}}</td>
-							<td>{{company.Operating Expenses}}</td>
-							<td>{{company.Operating Income}}</td>
-							<td>{{company.Gross Margin}}</td>
-							<td>{{company.Interest Expense}}</td>
-							<td>{{company.Earnings Before Tax}}</td>
-							<td>{{company.Income Tax Expense}}</td>
-							<td>{{company.Net Income}}</td>
-							<td>{{company.Profit Margin}}</td>
-							<td>{{company.EBITDA}}</td>
-							<td>{{company.EBITDA Margin}}</td>
-						</tr>
-						{{/each}}
-					</tbody>
-				</div>
-			</div>
 		</div>
-
-		<br>
-		<br>
-
-		<footer class="text-center">
-			<hr>
-			<br>
-			Copyright
-			<br>
-			<br>
-		</footer>
-
 	</div>
-</div>

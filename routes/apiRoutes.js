@@ -3,7 +3,12 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/company", function(req, res) {
-    db.Company.findAll({}).then(function(Company) {
+    // need to check post-api-routes in previous exercise on here
+    db.Company.findAll(
+      {
+        // will be changed to db.User
+        include: [db.Financials]
+      }).then(function(Company) {
       res.json(Company);
     });
   });
@@ -13,11 +18,20 @@ module.exports = function(app) {
     db.Company.findOne({
       where: {
         symbol: req.params.symbol
-      }
+      },
+      // will be changed to db.User
+      include: [db.Financials]
     }).then(function(db) {
       res.json(db);
     });
   });
+
+  app.get("/api/financials", function(req,res){
+    db.Financials.findAll({}).then(function(Financials){
+      res.json(Financials);
+    })
+  });
+
 
   // Create a new Company
   app.post("/api/insert", function(req, res) {
@@ -43,6 +57,23 @@ module.exports = function(app) {
       res.json(Company);
     });
   });
+
+  app.post("/api/insert/financials", function(req, res){
+    db.Financials.create({
+      symbol: req.body.symbol,
+      date: req.body.date,
+      revenue: req.body.revenue,
+      revenueGrowth: req.body.revenueGrowth,
+      costOfRevenue: req.body.costOfRevenue,
+      grossProfit: req.body.grossProfit,
+      rndExpenses: req.body.rndExpenses,
+      sgaExpense: req.body.sgaExpense,
+      CompanyId: req.body.CompanyId
+    }).then(function(Financials){
+      res.json(Financials);
+    })
+  })
+
 
   // Delete an example by id
   app.delete("/api/conmpany/:id", function(req, res) {

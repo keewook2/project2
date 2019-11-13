@@ -1,14 +1,17 @@
-<nav>
-	//Left Side:
-	// Logo
-	// Company Name: (name)
-	// Ticker: (this.ticker)
-
-	// Right Side:
-	// Stock Price - Daily Close or Current
-	// Stock Price - 52 week high/low
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">App Name</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Company</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Sign in</a>
+    </li>
+  </ul>
 </nav>
-
+<br>
 <div class="wrapper">
 	<div class="container">
 		<div class="row">
@@ -21,111 +24,100 @@
 				<br>
 				<div class="card-body">
 					<img src="{{company.image}}"><br>
-					Ticker: {{company.symbol}}
+					Ticker: <span id="ticker">{{company.symbol}}</span>
 					<br>
-					Name: {{company.companyName}}<br>
+					Name: <span id="companyName">{{company.companyName}}</span><br>
 					Industry: {{company.industry}}<br>
 					Sector: {{company.sector}}<br>
 					CEO: {{company.ceo}}<br>
 				</div>
-			</div> // END OVERVIEW CARD
+			</div> 
 
-			<div class="card col-8" id="metrics">
+			<div class="card col-12" id="metrics">
 				<div class="card-title">
-					Key Financial Metrics
+					Summary Financials
 				</div>
 				<br>
-				<hr>
-				<br>
-				<div class="card-body">
-					<div class="metrics-fin-stats">
-						// Revenue
-						// Rev Growth
-						// GP
-						// % margin
-						// Operating Income/(Loss)
-						// % margin
-						// Net Income
-						// % margin
-						// EBITDA
-						// % margin
-					</div>
-					<div class="metrics-bs-stock"></div>
-					// BS
-					// Cash
-					// New Working Capital
-					// Leverage Ratio
-					// Free Cash Flow
-					// Interest Coverage
-					// Stock
-					// Total Shares Outstanding
-					// Common shares Outstanding
-					// Dividend info
-					// Need to decide what to show here
-
+				<div class="card-body metrics-fin-stats">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr class="statement_year">
+								<th class="companyName"></th>
+								<th>2015</th>
+								<th>2016</th>
+								<th>2017</th>
+								<th>2018</th>
+								<th>2019</th>
+							</tr>
+						</thead>
+						<tbody class="statement_body">
+							<tr class="table_revenue">
+								<td>Revenue</td>
+							</tr>
+							<tr class="table_revenueGrowth">
+								<td>Revenue Growth</td>
+							</tr>
+							<tr class="table_COGS">
+								{{!-- COGS is same as cost of revenue --}}
+								<td>COGS</td>
+							</tr>
+							<tr class="table_GP">
+								<th>Gross Profit</th>
+							</tr>
+							<tr class="table_opEx">
+								<td>Operating Expenses</td>
+							</tr>
+							<tr class="table_opInc">
+								<th>Operating Income</th>
+							</tr>
+							<tr class="table_grossMargin">
+								<td>Gross Margin</td>
+							</tr>
+							<tr class="table_intEx">
+								<td>Interest Expense</td>
+							</tr>
+							<tr class="table_EBT">
+								<th>Earnings before Tax</th>
+							</tr>
+							<tr class="table_ITE">
+								<td>Income Tax Expense</td>
+							</tr>
+							<tr class="table_NI">
+								<th>Net Income</th>
+							</tr>
+							<tr class="table_PM">
+								<td>Profit Margin</td>
+							</tr>
+							<tr class="table_EBITDA">
+								<th>EBITDA</th>
+							</tr>
+							<tr class="table_EBITDAM">
+								<th>EBITDA Margin</th>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			</div> // END KEY METRICS CARD
-		</div> // end first row
+			</div>
+		</div> 
 
 		<br>
 		<hr>
 		<br>
 
 		<div class="row">
-			<div class="card col-4" id="news">
+			<div class="card col-5" id="news">
 				<div class="card-title">
-					Latest News
+					<span id="test">Latest News</span>
 				</div>
-				<br>
 				<hr>
-				<br>
 				<div class="card-body">
-					// TBD once we have determined an API and fields for output
-					// Date
-					// Headline
-					// Publisher
-					// Executive Summary
-					// Tags
+					<h3 class="news_title"></h3>
+					<p class="news_source"></p>
+					<p class="news_date"></p>
+					<p class="news_summary"></p>
 				</div>
-			</div> // END NEWS CARD
-
-			<div class="card col-8" id="fin-stats">
-				<div class="card-title">
-					Summary Financial Statements
-				</div>
-				<br>
-				<hr>
-				<br>
-				<div class="card-body">
-					// Income Statement
-					// Revenue
-					// Rev Growth
-					// COGS
-					// GP
-					// GP Margin
-					// OpEx
-					// EBT
-					// Net Income
-					// EBITDA
-					// EBITDA margin
-					// BS
-					// Cash
-					// Current Assets
-					// LT Assets
-					// Total Assets
-					// Current Liabilities
-					// LT Liabilities
-					// Total Liabilities
-					// Equtiy (Need to decide which accounts to show as varies between company)
-					//
-
-					Total Consolidated Debt
-				</div>
-
-				// NEED TO ADD PLACEHOLDERS FOR DESIRED FUNCTIONALITY E.G. BUTTONS TO GENERATE MODEL OUTPUT
-
-			</div> // END SUMMARY FINANCIALS CARD
-		</div> // END SECOND ROW
+			</div> 
+		</div> 
 
 		<br>
 		<br>
@@ -140,3 +132,5 @@
 
 	</div>
 </div>
+{{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+<script src="/js/companies.js"></script>

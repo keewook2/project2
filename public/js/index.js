@@ -115,6 +115,92 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+$(document).on("submit", "#add_all", handleCompanyFormSubmit);
+$(document).on("submit", "#searchSymbol",handleCompanySearch);
+
+function handleCompanySearch(event){
+  event.preventDefault();
+  var symbol = $("#searchBarText").val().trim();
+  // console.log(symbol);
+
+  $.ajax({
+    url: "/company/" + symbol,
+    method: "GET",
+    success: function(response){
+      window.location.href = "/company/"+symbol
+    }
+  });
+}
+
+function handleCompanyFormSubmit(event){
+  event.preventDefault();
+
+  // PSEUDO CODE
+  // AJAX CALL TO GET S&P500 COMPANY SYMBOL from financial modeling API
+    //  THEN inside of it, for loop for 500 times ANOTHER AJAX CALL TO GET COMPANY INFO from financial modeling API
+      // THEN using response of it, get symbol,price,beta....,image from it and store it on variable
+        // then call upsertCompany to post the data into our DB
+
+  $.ajax({
+    url: "https://financialmodelingprep.com/api/v3/stock/actives",
+    method: "GET"
+  }).then(function(response){
+    // console.log(response);
+    for (var i = 0; i < response.mostActiveStock.length; i++){
+      
+      var ticker = response.mostActiveStock[i].ticker;
+      $.ajax({
+        url: "https://financialmodelingprep.com/api/v3/company/profile/" + ticker,
+        method: "GET"
+      }).then(function(response){
+        var symbol = response.symbol;
+        var price = response.profile.price;
+        var beta = response.profile.beta;
+        var volAvg = response.profile.volAvg;
+        var mktCap = response.profile.mktCap;
+        var lastDiv = response.profile.lastDiv;
+        var range = response.profile.range;
+        var changes = response.profile.changes;
+        var changesPercentage = response.profile.changesPercentage;
+        var companyName = response.profile.companyName;
+        var exchange = response.profile.exchange;
+        var industry = response.profile.industry;
+        var website = response.profile.website;
+        var description = response.profile.description;
+        var ceo = response.profile.description;
+        var sector = response.profile.sector;
+        var image = response.profile.image;
+
+        upsertCompany({
+          symbol: symbol,
+          price: price,
+          beta: beta,
+          volAvg: volAvg,
+          mktCap: mktCap,
+          lastDiv: lastDiv,
+          range: range,
+          changes: changes,
+          changesPercentage: changesPercentage,
+          companyName: companyName,
+          exchange: exchange,
+          industry: industry,
+          website: website,
+          description: description,
+          ceo: ceo,
+          sector: sector,
+          image: image
+        });
+      })
+    }
+  })
+
+}
+
+function upsertCompany(companyData){
+  $.post("/api/insert", companyData);
+}
+
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);

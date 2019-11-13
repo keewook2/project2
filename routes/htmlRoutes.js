@@ -13,11 +13,28 @@ module.exports = function(app) {
 
   app.get("/company",function(req,res){
     db.Company.findAll({}).then(function(company){
-      res.render("lists", {
+      // res.json(company); => array of objects
+      res.render("companies", {
         company: company
       })
     })
   })
+
+  app.get("/list",function(req,res){
+    // db.Company.findAll({}).then(function(company){
+    //   res.json(company);
+    //   console.log(company[0].dataValues.symbol);
+    // })
+   
+    // Testuser model has one attribute, which is symbol.
+    // by using symbol, we call ajax to get company info
+    db.Testuser.findAll({}).then(function(testuser){
+      res.render("lists", {
+        testuser: testuser
+      })
+    })
+  })
+
 
   // Load company page and pass in an example by symbol
   app.get("/company/:symbol", function(req, res) {

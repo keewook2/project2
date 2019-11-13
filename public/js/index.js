@@ -167,7 +167,7 @@ function handleCompanyFormSubmit(event){
         var industry = response.profile.industry;
         var website = response.profile.website;
         var description = response.profile.description;
-        var ceo = response.profile.description;
+        var ceo = response.profile.ceo;
         var sector = response.profile.sector;
         var image = response.profile.image;
 

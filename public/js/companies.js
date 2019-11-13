@@ -53,6 +53,36 @@ $(document).ready(function(){
 
     });
 
+    $.ajax({
+        url: baseURL + "/company-key-metrics/" + ticker,
+        method: "GET"
+    }).then(function(response){
+        for (var i = 4; i >= 0; i--){
+            var metrics = response.metrics[i];
+            var workingCapital = metrics["Working Capital"];
+            var daysSalesOutstanding = metrics["Days Sales Outstanding"];
+            var daysPayablesOutstanding = metrics["Days Payables Outstanding"];
+            var daysOfInventoryOnHand = metrics["Days of Inventory on Hand"];
+            var receivablesTurnover = metrics["Receivables Turnover"];
+            var payablesTurnover = metrics["Payables Turnover"];
+            var inventoryTurnover = metrics["Inventory Turnover"];
+            var netDebtToEBITDA = metrics["Net Debt to EBITDA"];
+            var currentRatio = metrics["Current ratio"];
+            var interestCoverage = metrics["Interest Coverage"];
+
+            addTd(workingCapital,".table_WC");
+            addTd(daysSalesOutstanding,".table_DSO");
+            addTd(daysPayablesOutstanding,".table_DPO");
+            addTd(daysOfInventoryOnHand,".table_DIH");
+            addTd(receivablesTurnover,".table_RT");
+            addTd(payablesTurnover,".table_PT");
+            addTd(inventoryTurnover,".table_IT");
+            addTd(netDebtToEBITDA,".table_NDEBITDA");
+            addTd(currentRatio,".table_CR");
+            addTd(interestCoverage,".table_IC");
+        }
+    })
+
     var apiKey = "f3a8b323323744b19301a95301e5ab60";
     var newsURL = "https://newsapi.org/v2/everything?q="+ name + "&from=2019-11-11&to=2019-11-11&sortBy=popularity&apiKey="
     $.ajax({

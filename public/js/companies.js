@@ -2,14 +2,11 @@ $(document).ready(function(){
     var ticker = $("#ticker").text();
     var name = $("#companyName").text();
     console.log(ticker);
-
     var baseURL ="https://financialmodelingprep.com/api/v3/";
-
     // Helper function to add the td on the table.
     function addTd(item,row){
         $(row).append("<td>"+item+"</td>");
     }
-
     // AJAX call to get income statement data
     $.ajax({
         url: baseURL + "financials/income-statement/" + ticker,

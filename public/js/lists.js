@@ -44,21 +44,19 @@ function getLists(){
                 row.append("<div class='col-md-2'><br><img src='"+image+"'></div>");
                 var cardText = $("<div class='col-md-7'>");
                 row.append(cardText);
-                cardText.append("<h4 class='card-title'>"+symbol);
+                cardText.append("<a href='/company/"+ symbol+"'> <h4 class='card-title'>"+symbol+"</a>");
                 cardText.append("<p class='card-text'>Last Price: "+price);
                 cardText.append("<p class='card-text'>Changes: "+changes);
                 cardText.append("<p class='card-text'>Market Cap: "+mktCap);
                 cardText.append("</div>");
                 var cardBtn = $("<div class='col-md-3'><br><br>");
                 row.append(cardBtn);
-                cardBtn.append("<form action='company/"+symbol+"' method='GET'>");
-                cardBtn.append("<button class='btn btn-primary'>Click to see detail</button>");
-                cardBtn.append("</form>");
+                // cardBtn.append("<button class='btn btn-primary' href='/company/"+symbol+"'>Click to see detail</button>");
                 cardBtn.append("<button class='btn btn-danger'>Delete from list</button>");
                 $("#lists").append(cardDiv);
             })
         }
-
+        // location.reload();
         $("#addBarText").val("");
     })
 }

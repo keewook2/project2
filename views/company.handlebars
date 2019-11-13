@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">App Name</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Company</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Sign in</a>
-    </li>
-  </ul>
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<a class="nav-link" href="#">App Name</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Company</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Sign in</a>
+		</li>
+	</ul>
 </nav>
 <br>
 <div class="wrapper">
@@ -31,7 +31,7 @@
 					Sector: {{company.sector}}<br>
 					CEO: {{company.ceo}}<br>
 				</div>
-			</div> 
+			</div>
 
 			<div class="card col-12" id="metrics">
 				<div class="card-title">
@@ -98,7 +98,7 @@
 					</table>
 				</div>
 			</div>
-		</div> 
+		</div>
 
 		<br>
 		<hr>
@@ -116,8 +116,11 @@
 					<p class="news_date"></p>
 					<p class="news_summary"></p>
 				</div>
-			</div> 
-		</div> 
+			</div>
+
+			// D3 Chart
+			<div class="col-7 chart"></div>
+		</div>
 
 		<br>
 		<br>
@@ -125,12 +128,57 @@
 		<footer class="text-center">
 			<hr>
 			<br>
-			Copyright: Dolla Billas LLC
+			Built by Kee, Abbosjon and Chris
 			<br>
 			<br>
 		</footer>
 
 	</div>
 </div>
-{{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+
 <script src="/js/companies.js"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3-format.v1.min.js"></script>
+<script type="text/javascript">
+
+	var data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120,
+		135
+	];
+
+	var height = 200,
+		width = 720,
+		barWidth = 40,
+		barOffset = 20;
+
+	var yScale = d3.scale.linear()
+		.domain([0, d3.max(data)])
+		.range([0, height])
+
+	var xScale = d3.scale.ordinal()
+		.domain(d3.range(0, data.length))
+		.rangeBands([0, width])
+
+	d3.select('.chart').append('svg')
+		.attr('width', width)
+		.attr('height', height)
+		.selectAll('rect').data(data)
+		.enter().append('rect')
+		.attr('width', xScale.rangeBand())
+		.attr('height', function (data) {
+			return yScale(data);
+		})
+		.attr('x', function (data, i) {
+			// return xScale(i);
+			return i * (barWidth + barOffset);
+		})
+		.attr('y', function (data) {
+			return height - yScale(data);
+		});
+
+	// FORMATTING
+	var percent = d3.format("~p")(0.123); // 12.3%
+	console.log(percent);
+
+	var thousands = d3.format("$,")(4223); // $4,200
+	console.log(thousands);
+</script>

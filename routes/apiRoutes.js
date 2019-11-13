@@ -6,6 +6,7 @@ module.exports = function(app) {
     // need to check post-api-routes in previous exercise on here
     db.Company.findAll(
       {
+        // will be changed to db.User
         include: [db.Financials]
       }).then(function(Company) {
       res.json(Company);
@@ -18,6 +19,7 @@ module.exports = function(app) {
       where: {
         symbol: req.params.symbol
       },
+      // will be changed to db.User
       include: [db.Financials]
     }).then(function(db) {
       res.json(db);

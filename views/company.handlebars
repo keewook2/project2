@@ -16,20 +16,20 @@
 	<div class="container">
 		<div class="row">
 			<div class="card col-4" id="overview">
-				<div class="card-title">
-					Company Overview
+				<div class="card-title text-center">
+					<h4>Company Overview</h4>
 				</div>
-				<br>
 				<hr>
-				<br>
 				<div class="card-body">
-					<img src="{{company.image}}"><br>
-					Ticker: <span id="ticker">{{company.symbol}}</span>
+					<img src="{{company.image}}">
 					<br>
-					Name: <span id="companyName">{{company.companyName}}</span><br>
-					Industry: {{company.industry}}<br>
-					Sector: {{company.sector}}<br>
-					CEO: {{company.ceo}}<br>
+					<br>
+					<p><strong>Company Name:</strong> {{company.companyName}}</p>
+					<p><strong>Ticker:</strong> {{company.symbol}}</p>
+					<p><strong>Industry:</strong> {{company.industry}}</p>
+					<p><strong>Sector:</strong> {{company.sector}}</p>
+					<p><strong>Description:</strong> {{company.ceo}}</p>
+
 				</div>
 			</div>
 

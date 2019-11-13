@@ -15,10 +15,16 @@ function ShowTheSectors(){
       var dataArr = response.sectorPerformance;
       dataArr.forEach(function(sector, item ,array){
       var sector = response.sectorPerformance[item].sector; 
-      var changes =  response.sectorPerformance[item].changesPercentage ; 
+      var changes =  parseFloat(response.sectorPerformance[item].changesPercentage); 
+      var style = "";
+      if (changes > 0){
+        style = "style='color: green;'";
+      }else if (changes < 0){
+        style = "style='color: red;'";
+      }
       console.log(sector);
       console.log(changes);
-      var SectorPercentage =  "<tr> <th> <a href='/company'>"+ sector + "</a></th> <th> "+ changes +" </th> </tr>" ; 
+      var SectorPercentage =  "<tr> <th>"+ sector + "</a></th> <td "+ style+ "> "+ changes +" </td> </tr>" ; 
       $(".tbody").append(SectorPercentage);
       });
   });

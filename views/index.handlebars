@@ -1,23 +1,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">App Name</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Company</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Sign in</a>
-    </li>
-  </ul>
-</nav>
-<br><br>
 <div id="home">
   <div class="container">
       <form id="searchSymbol">
-        <input class="form-control" type="text" id="searchBarText" placeholder="Search by Ticker(AAPL,FB,GOOG)" aria-label="Search">
-        <input class="btn btn-primary" type="submit" value="Search">
+        <div class="row">
+          <input class="form-control col-10" type="text" id="searchBarText" placeholder="Search by Ticker(AAPL,FB,GOOG)" aria-label="Search">
+          <input class="btn btn-primary col-2" type="submit" value="Search">
+        </div>
       </form>
     </div>
 
@@ -44,9 +32,9 @@
           </li>
           {{/each}}
         </ul>
-        <form id="add_all">
+        {{!-- <form id="add_all">
         <button class="btn btn-primary" type="submit">Add all(test)</button>
-        </form>
+        </form> --}}
       </div>
     </div>
   </div>

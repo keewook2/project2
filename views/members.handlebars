@@ -47,24 +47,17 @@
   </div>
   <div id="home">
  <div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{example.id}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+    <form id="addList">
+        <div class="row">
+        <input class="form-control col-10" type="text" id="addBarText" placeholder="Add the Company by ticker (AAPL,FB,GOOG)" aria-label="Search">
+        <input class="btn btn-primary col-2" type="submit" value="Add">
         </div>
-      </div>
+    </form>
+    <div id="lists">
     </div>
-  </div>
 </div>
+<script src="js/lists.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/members.js"></script>

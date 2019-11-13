@@ -14,6 +14,7 @@
 <br>
 <div class="wrapper">
 	<div class="container">
+
 		<div class="row">
 			<div class="card col-4" id="overview">
 				<div class="card-title text-center">
@@ -29,10 +30,22 @@
 					<p><strong>Industry:</strong> {{company.industry}}</p>
 					<p><strong>Sector:</strong> {{company.sector}}</p>
 					<p><strong>Description:</strong> {{company.ceo}}</p>
-
 				</div>
 			</div>
 
+			{{!-- D3 Graph --}}
+			<div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<div class="col-8 chart"></div>
+			</div>
+
+		</div>
+
+		<div class="row">
 			<div class="card col-12" id="metrics">
 				<div class="card-title">
 					Summary Financials
@@ -99,41 +112,42 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<br>
-		<hr>
-		<br>
+	<br>
+	<hr>
+	<br>
 
-		<div class="row">
-			<div class="card col-5" id="news">
-				<div class="card-title">
-					<span id="test">Latest News</span>
-				</div>
-				<hr>
-				<div class="card-body">
-					<h3 class="news_title"></h3>
-					<p class="news_source"></p>
-					<p class="news_date"></p>
-					<p class="news_summary"></p>
-				</div>
+	<div class="row">
+		<div class="card col-5" id="news">
+			<div class="card-title">
+				<span id="test">Latest News</span>
 			</div>
-
-			{{!-- PICK DATA FROM API TO LINK UP AND DECIDE ON LOCATION / STY --}}
-			<div class="col-7 chart"></div>
+			<hr>
+			<div class="card-body">
+				<h3 class="news_title"></h3>
+				<p class="news_source"></p>
+				<p class="news_date"></p>
+				<p class="news_summary"></p>
+			</div>
 		</div>
 
-		<br>
-		<br>
-
-		<footer class="text-center">
-			<hr>
-			<br>
-			Built by Kee, Abbosjon and Chris
-			<br>
-			<br>
-		</footer>
+		{{!-- PICK DATA FROM API TO LINK UP AND DECIDE ON LOCATION / STY --}}
 
 	</div>
+
+	<br>
+	<br>
+
+	<footer class="text-center">
+		<hr>
+		<br>
+		Built by Kee, Abbosjon and Chris
+		<br>
+		<br>
+	</footer>
+
+</div>
 </div>
 
 <script src="/js/companies.js"></script>
@@ -145,7 +159,7 @@
 		135
 	];
 
-	var height = 200,
+	var height = 400,
 		width = 720,
 		barWidth = 40,
 		barOffset = 20;

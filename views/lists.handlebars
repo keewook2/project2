@@ -1,27 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">App Name</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Company</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Sign in</a>
-    </li>
-  </ul>
-</nav>
+
 {{#each company}}
     <ul style="margin-top:20px;">
         <div class="card" style="width: 90%;">
+            <div class="card-header">
+              {{this.companyName}}
+            </div>
             <div class="row no-gutters">
                 <div class="col-md-2">
                     <br>
                     <img src="{{this.image}}" alt="...">
                 </div>
                 <div class="col-md-7">
-                    <h4 class="card-title">{{this.companyName}}</h4>
-                    <p class="card-subtitle">{{this.symbol}}</p>
+                    <h4 class="card-title">{{this.symbol}}</p>
                     <p class="card-text">Last Price: ${{this.price}}</p>
                     <p class="card-text">Changes: ${{this.changes}}</p>
                     <p class="card-text">Market Cap: {{this.mktCap}}</p>

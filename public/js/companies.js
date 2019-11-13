@@ -18,21 +18,21 @@ $(document).ready(function(){
         console.log(response);
         for (var i = 4; i >= 0; i--){
             var financials = response.financials[i];
-            var revenue = financials.Revenue;
+            var revenue = d3.format("$,")(parseFloat(financials.Revenue));
             var year = financials["date"].slice(0,4);
-            var revenueGrowth = financials["Revenue Growth"];
-            var costOfRevenue = financials["Cost of Revenue"];
-            var grossProfit = financials["Gross Profit"];
-            var operatingExpenses = financials["Operating Expenses"];
-            var operatingIncome = financials["Operating Income"];
-            var grossMargin = financials["Gross Margin"];
-            var interestExpense = financials["Interest Expense"];
-            var incomeTaxExpense = financials["Income Tax Expense"];
-            var earningsBeforeTax = financials["Earnings before Tax"];
-            var netIncome = financials["Net Income"];
-            var profitMargin = financials["Profit Margin"];
-            var EBITDA = financials["EBITDA"];
-            var EBITDAMargin = financials["EBITDA Margin"];
+            var revenueGrowth = d3.format("~p")(parseFloat(financials["Revenue Growth"]));
+            var costOfRevenue = d3.format("$,")(parseFloat(financials["Cost of Revenue"]));
+            var grossProfit = d3.format("$,")(parseFloat(financials["Gross Profit"]));
+            var operatingExpenses = d3.format("$,")(parseFloat(financials["Operating Expenses"]));
+            var operatingIncome = d3.format("$,")(parseFloat(financials["Operating Income"]));
+            var grossMargin = d3.format("~p")(parseFloat(financials["Gross Margin"]));
+            var interestExpense = d3.format("$,")(parseFloat(financials["Interest Expense"]));
+            var incomeTaxExpense = d3.format("$,")(parseFloat(financials["Income Tax Expense"]));
+            var earningsBeforeTax = d3.format("$,")(parseFloat(financials["Earnings before Tax"]));
+            var netIncome = d3.format("$,")(parseFloat(financials["Net Income"]));
+            var profitMargin = d3.format("~p")(parseFloat(financials["Profit Margin"]));
+            var EBITDA = d3.format("$,")(parseFloat(financials["EBITDA"]));
+            var EBITDAMargin = d3.format("~p")(parseFloat(financials["EBITDA Margin"]));
 
             addTd(revenue,".table_revenue");
             addTd(revenueGrowth,".table_revenueGrowth");
@@ -59,7 +59,7 @@ $(document).ready(function(){
     }).then(function(response){
         for (var i = 4; i >= 0; i--){
             var metrics = response.metrics[i];
-            var workingCapital = metrics["Working Capital"];
+            var workingCapital = d3.format("$,")(parseFloat(metrics["Working Capital"]));
             var daysSalesOutstanding = metrics["Days Sales Outstanding"];
             var daysPayablesOutstanding = metrics["Days Payables Outstanding"];
             var daysOfInventoryOnHand = metrics["Days of Inventory on Hand"];

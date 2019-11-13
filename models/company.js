@@ -19,12 +19,6 @@ module.exports = function(sequelize, DataTypes) {
     image: DataTypes.TEXT,
   });
 
-  Company.associate = function(models){
-    Company.hasMany(models.Financials, {
-      onDelete: "cascade"
-    });
-  };
-
   // Company.associate = function(models){
   //   Company.hasMany(models.Keymetrics, {
   //     onDelete: "cascade"

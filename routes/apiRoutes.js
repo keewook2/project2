@@ -8,6 +8,7 @@ module.exports = function(app) {
     // need to check post-api-routes in previous exercise on here
     db.Company.findAll(
       {
+        // will be changed to db.User
         include: [db.Financials]
       }).then(function(Company) {
       res.json(Company);
@@ -79,23 +80,25 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/insert/financials", function(req, res){
-    db.Financials.create({
-      symbol: req.body.symbol,
-      date: req.body.date,
-      revenue: req.body.revenue,
-      revenueGrowth: req.body.revenueGrowth,
-      costOfRevenue: req.body.costOfRevenue,
-      grossProfit: req.body.grossProfit,
-      rndExpenses: req.body.rndExpenses,
-      sgaExpense: req.body.sgaExpense,
-      CompanyId: req.body.CompanyId
-    }).then(function(Financials){
-      res.json(Financials);
+  app.post("/api/list/insert", function(req,res){
+    db.Testuser.create({
+      symbol: req.body.symbol
+    }).then(function(TestuserData){
+      res.json(TestuserData);
+    });
+  });
+
+  app.get("/api/list", function(req,res){
+    db.Testuser.findAll({}).then(function(TestuserData){
+      res.json(TestuserData);
     })
   })
-
-
+  
+  app.delete("/api/list/:id", function(req,res){
+    db.Testuser.destroy({ where: {id: req.params.id}}).then(function(db){
+      res.json(db);
+    })
+  })
   // Delete an example by id
   app.delete("/api/company/:id", function(req, res) {
     db.Company.destroy({

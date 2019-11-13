@@ -15,21 +15,21 @@ $(document).ready(function(){
         console.log(response);
         for (var i = 4; i >= 0; i--){
             var financials = response.financials[i];
-            var revenue = financials.Revenue;
+            var revenue = d3.format("$,")(parseFloat(financials.Revenue));
             var year = financials["date"].slice(0,4);
-            var revenueGrowth = financials["Revenue Growth"];
-            var costOfRevenue = financials["Cost of Revenue"];
-            var grossProfit = financials["Gross Profit"];
-            var operatingExpenses = financials["Operating Expenses"];
-            var operatingIncome = financials["Operating Income"];
-            var grossMargin = financials["Gross Margin"];
-            var interestExpense = financials["Interest Expense"];
-            var incomeTaxExpense = financials["Income Tax Expense"];
-            var earningsBeforeTax = financials["Earnings before Tax"];
-            var netIncome = financials["Net Income"];
-            var profitMargin = financials["Profit Margin"];
-            var EBITDA = financials["EBITDA"];
-            var EBITDAMargin = financials["EBITDA Margin"];
+            var revenueGrowth = d3.format("~p")(parseFloat(financials["Revenue Growth"]));
+            var costOfRevenue = d3.format("$,")(parseFloat(financials["Cost of Revenue"]));
+            var grossProfit = d3.format("$,")(parseFloat(financials["Gross Profit"]));
+            var operatingExpenses = d3.format("$,")(parseFloat(financials["Operating Expenses"]));
+            var operatingIncome = d3.format("$,")(parseFloat(financials["Operating Income"]));
+            var grossMargin = d3.format("~p")(parseFloat(financials["Gross Margin"]));
+            var interestExpense = d3.format("$,")(parseFloat(financials["Interest Expense"]));
+            var incomeTaxExpense = d3.format("$,")(parseFloat(financials["Income Tax Expense"]));
+            var earningsBeforeTax = d3.format("$,")(parseFloat(financials["Earnings before Tax"]));
+            var netIncome = d3.format("$,")(parseFloat(financials["Net Income"]));
+            var profitMargin = d3.format("~p")(parseFloat(financials["Profit Margin"]));
+            var EBITDA = d3.format("$,")(parseFloat(financials["EBITDA"]));
+            var EBITDAMargin = d3.format("~p")(parseFloat(financials["EBITDA Margin"]));
 
             addTd(revenue,".table_revenue");
             addTd(revenueGrowth,".table_revenueGrowth");
@@ -49,6 +49,36 @@ $(document).ready(function(){
 
 
     });
+
+    $.ajax({
+        url: baseURL + "/company-key-metrics/" + ticker,
+        method: "GET"
+    }).then(function(response){
+        for (var i = 4; i >= 0; i--){
+            var metrics = response.metrics[i];
+            var workingCapital = d3.format("$,")(parseFloat(metrics["Working Capital"]));
+            var daysSalesOutstanding = metrics["Days Sales Outstanding"];
+            var daysPayablesOutstanding = metrics["Days Payables Outstanding"];
+            var daysOfInventoryOnHand = metrics["Days of Inventory on Hand"];
+            var receivablesTurnover = metrics["Receivables Turnover"];
+            var payablesTurnover = metrics["Payables Turnover"];
+            var inventoryTurnover = metrics["Inventory Turnover"];
+            var netDebtToEBITDA = metrics["Net Debt to EBITDA"];
+            var currentRatio = metrics["Current ratio"];
+            var interestCoverage = metrics["Interest Coverage"];
+
+            addTd(workingCapital,".table_WC");
+            addTd(daysSalesOutstanding,".table_DSO");
+            addTd(daysPayablesOutstanding,".table_DPO");
+            addTd(daysOfInventoryOnHand,".table_DIH");
+            addTd(receivablesTurnover,".table_RT");
+            addTd(payablesTurnover,".table_PT");
+            addTd(inventoryTurnover,".table_IT");
+            addTd(netDebtToEBITDA,".table_NDEBITDA");
+            addTd(currentRatio,".table_CR");
+            addTd(interestCoverage,".table_IC");
+        }
+    })
 
     var apiKey = "f3a8b323323744b19301a95301e5ab60";
     var newsURL = "https://newsapi.org/v2/everything?q="+ name + "&from=2019-11-11&to=2019-11-11&sortBy=popularity&apiKey="

@@ -1,4 +1,6 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+var path = require("path");
 
 module.exports = function(app) {
   // Load index page
@@ -28,12 +30,22 @@ module.exports = function(app) {
     });
   });
   
-  app.get("/user",function(req,res){
-    res.render("signup");
+  app.get("/login",function(req,res){
+    res.render("login");
+  })
+  
+  app.get("/singup",function(req,res){
+    res.render("singup");
+  })
+
+  app.get("/members",function(req,res){
+    res.render("members");
   })
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     // redirect it to index 
     res.render("404");
   });
+
+  
 };

@@ -140,7 +140,7 @@ $("#add-user").on("click", function(event) {
     password : $("#password").val().trim(),
   };
   // Send the POST request.
-  $.ajax("/user", {
+  $.ajax("/signup", {
     type: "POST",
     data: user
   }).then(

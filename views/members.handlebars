@@ -16,14 +16,27 @@
       <a class="nav-link" href="#">Company</a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="#">Sectors</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">APi</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="#">News</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="#">News Features</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="/logout">Log out</a>
     </li>
+    
   </ul>
 </nav>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h2> You sign In as  <span class="member-name"></span></h2>
+        <h2> You sing In as  <span class="member-name"></span></h2>
       </div>
       <script>
         $.get("/api/user_data").then(function(data){
@@ -33,26 +46,26 @@
     </div>
   </div>
   <div id="home">
-  <div class="">
-    <div class="row">
-      <div class="col-8 offset-2">
-
-        <h4>Sector Performance</h4>
-        <table class="table table-stripped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Change (%)</th>
-            </tr>
-          </thead>
-          <tbody class="tbody">
-            
-          </tbody>
-        </table>
+ <div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Example</h5>
+          <p>
+            <strong>ID</strong>: {{example.id}}</p>
+          <p>
+          <p>
+            <strong>Text</strong>: {{example.text}}</p>
+          <p>
+            <strong>Description:</strong> {{example.description}}</p>
+            <a href="/">← Back To Home</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/members.js"></script>
   <script src="/js/index.js"></script>

@@ -38,9 +38,10 @@ module.exports = function(app) {
     res.render("singup");
   })
 
-  app.get("/members",function(req,res){
-    res.render("members");
-  })
+  app.get("/members", isAuthenticated, function(req, res) {
+   // res.sendFile(path.join(__dirname, "../public/members.html"));
+   res.render("members");
+  });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     // redirect it to index 

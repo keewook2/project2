@@ -150,7 +150,6 @@ $("#add-user").on("click", function(event) {
   );
 });
 
- 
 $("#email-display").text(localStorage.getItem("email"));
 
 

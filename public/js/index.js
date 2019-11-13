@@ -116,6 +116,21 @@ var handleDeleteBtnClick = function() {
 };
 
 $(document).on("submit", "#add_all", handleCompanyFormSubmit);
+$(document).on("submit", "#searchSymbol",handleCompanySearch);
+
+function handleCompanySearch(event){
+  event.preventDefault();
+  var symbol = $("#searchBarText").val().trim();
+  // console.log(symbol);
+
+  $.ajax({
+    url: "/company/" + symbol,
+    method: "GET",
+    success: function(response){
+      window.location.href = "/company/"+symbol
+    }
+  });
+}
 
 function handleCompanyFormSubmit(event){
   event.preventDefault();

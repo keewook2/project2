@@ -25,7 +25,10 @@
       <a class="nav-link" href="/list">Watch List</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/#">Sign in</a>
+      <a class="nav-link signin" href="/singup">Sign in</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link logout" href="/logout"></a>
     </li>
   </ul>
 </nav>
@@ -34,4 +37,19 @@
   
 <script src="/js/singup.js"></script>
 <script src="/js/login.js"></script>
+ <script>
+        $.get("/api/user_data").then(function(data){
+          console.log(data);
+          if(data.email){
+                  $(".member-name").text(data.email);
+                  $(".logout").text("Log out!");
+                  $(".signin").text("");
+          }else{
+             $(".signin").text("Sign in");
+             $(".logout").text(" ");
+          }
+          
+        });
+  </script>
+
 </html>

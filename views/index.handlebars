@@ -1,15 +1,7 @@
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>no
 <div id="home">
-  <div class="container">
-      <form id="searchSymbol">
-        <div class="row col-8 offset-2">
-          <input class="form-control col-10" type="text" id="searchBarText" placeholder="Search by Ticker(AAPL,FB,GOOG)" aria-label="Search">
-          <input class="btn btn-primary col-2" type="submit" value="Search">
-        </div>
-      </form>
-    </div>
-    <br><br>
+  <div class="">
     <div class="row">
       <div class="col-8 offset-2">
         <h4>Sector Performance</h4>
@@ -23,6 +15,18 @@
           <tbody class="tbody">
           </tbody>
         </table>
+        <ul id="example-list" class="list-group">
+          {{#each sectors}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="sectors/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
+        {{!-- <form id="add_all">
+        <button class="btn btn-primary" type="submit">Add all(test)</button>
+        </form> --}}
+      </div>
     </div>
   </div>
 </div>
